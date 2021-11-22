@@ -1,0 +1,14 @@
+{
+    "editTimers": "Edit timers",
+    "run": "Run",
+    "selectColor": "select color",
+    "title": "title",
+    "phaseDelay": "phase delay",
+    "repeatDelay": "repeat delay",
+    "repeats": "repeats",
+    "phaseTitle": "phase title",
+    "phaseWait": "phase duration",
+    "font": "font",
+    "deleteInfo": "delete data"
+    
+}
