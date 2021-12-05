@@ -1082,6 +1082,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
               height: MediaQuery.of(context).size.height * 0.08,
               margin: EdgeInsets.fromLTRB(10, 20, 20, 0),
               child: Text('$topText',
+                  maxLines: 1,
                   style: TextStyle(
                     fontSize: 38,
                     color: Colors.white70,
@@ -1091,6 +1092,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
               alignment: Alignment.centerRight,
               padding: EdgeInsets.fromLTRB(10, 20, 20, 0),
               child: Text('$botText',
+                  maxLines: 1,
                   style: TextStyle(
                     fontSize: 38,
                     color: Colors.white70,
