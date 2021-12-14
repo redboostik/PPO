@@ -3,6 +3,7 @@ import 'package:webfeed/webfeed.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import 'database.dart';
 import 'models/Feed.dart';
@@ -75,7 +76,23 @@ class RSSDemoState extends State<RSSDemo> {
 
   Future<void> openFeed(String url) async {
     if (await canLaunch(url)) {
-      await launch(url, forceWebView: false, universalLinksOnly: true);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => new WebView(
+                  allowsInlineMediaPlayback: true,
+                  initialUrl: url,
+                  javascriptMode: JavascriptMode.unrestricted,
+                  navigationDelegate: (NavigationRequest request) {
+                    if (request.url.startsWith('https://dev.by')) {
+                      return NavigationDecision.navigate;
+                    } else {
+                      launch(request.url);
+                      return NavigationDecision.prevent;
+                    }
+                  },
+                )),
+      ).then((value) => setState(() {}));
       return;
     }
     updateTitle(feedOpenErrorMsg);
